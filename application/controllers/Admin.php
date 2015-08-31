@@ -61,13 +61,15 @@ class Admin extends CI_Controller {
 	
 		if($query->num_rows() == 1)
 		{
+			$user = $query->row();
+			
 			$sess_array = array(
 				'id' => $user->id,
 				'username' => $user->username
 			);
 			
 			$this->session->set_userdata('user_session', $sess_array);
-			return $query->row();
+			return $user;
 		}
 		else
 		{
